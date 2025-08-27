@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motu Mama Biryani - The Taste of Tradition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700;800&display.swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #121212; color: #f1f1f1; }
         .font-display { font-family: 'Playfair Display', serif; }
-        .hero-bg { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=2787&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; }
-        .menu-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(255, 165, 0, 0.2), 0 10px 10px -5px rgba(255, 165, 0, 0.1); }
+        .hero-bg { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=2787&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .menu-card { 
+            background-color: #1f1f1f;
+            border: 1px solid #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .menu-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 20px 25px -5px rgba(239, 68, 68, 0.1), 0 10px 10px -5px rgba(239, 68, 68, 0.08);
+        }
         .animated-element { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .animated-element.is-visible { opacity: 1; transform: translateY(0); }
         .modal-backdrop { transition: opacity 0.3s ease; }
@@ -22,79 +29,74 @@
         .gallery-item:hover { transform: scale(1.05); filter: brightness(1.1); }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #2a2a2a; }
-        ::-webkit-scrollbar-thumb { background: #fb923c; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #f97316; }
-        .active-link { color: #fb923c; }
+        ::-webkit-scrollbar-thumb { background: #EF4444; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #DC2626; }
+        .active-link { color: #EF4444; }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .nav-item-animate { animation: fadeInDown 0.5s ease-out forwards; opacity: 0; }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Header and other sections remain the same -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-50 backdrop-blur-md transition-all duration-300" id="header"><div class="container mx-auto px-6 py-4 flex justify-between items-center"><h1 class="text-3xl font-display text-orange-400 nav-item-animate">Motu Mama Biryani</h1><nav class="hidden md:flex items-center"><a href="#menu" data-section="menu" class="nav-link text-white hover:text-orange-400 transition duration-300 mx-4 nav-item-animate" style="animation-delay: 100ms;">Menu</a><a href="#why-us" data-section="why-us" class="nav-link text-white hover:text-orange-400 transition duration-300 mx-4 nav-item-animate" style="animation-delay: 200ms;">Why Us</a><a href="#gallery" data-section="gallery" class="nav-link text-white hover:text-orange-400 transition duration-300 mx-4 nav-item-animate" style="animation-delay: 300ms;">Gallery</a><a href="#order-section" data-section="order-section" class="nav-link bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ml-4 nav-item-animate" style="animation-delay: 400ms;">Order Now</a></nav><button id="mobile-menu-btn" class="md:hidden text-white text-3xl"><ion-icon name="menu-outline"></ion-icon></button></div><div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-90"><a href="#menu" data-section="menu" class="nav-link block text-center text-white py-3 hover:bg-orange-500 transition duration-300">Menu</a><a href="#why-us" data-section="why-us" class="nav-link block text-center text-white py-3 hover:bg-orange-500 transition duration-300">Why Us</a><a href="#gallery" data-section="gallery" class="nav-link block text-center text-white py-3 hover:bg-orange-500 transition duration-300">Gallery</a><a href="#order-section" data-section="order-section" class="nav-link block text-center bg-orange-500 text-white font-bold py-3 hover:bg-orange-600 transition duration-300">Order Now</a></div></header>
-    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4"><div class="animated-element is-visible"><h2 class="text-5xl sm:text-6xl md:text-8xl font-display text-white mb-4 leading-tight">Taste the Royal Legacy</h2><p class="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Authentic Dum Biryani, slow-cooked with passion and the finest ingredients, delivered to your doorstep.</p><a href="#menu" class="nav-link bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">Explore Our Menu</a></div></section>
-    <section id="why-us" class="py-20 bg-gray-900"><div class="container mx-auto px-6"><h2 class="text-4xl md:text-5xl font-display text-center text-orange-400 mb-12 animated-element">Why Choose Us?</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center"><div class="animated-element"><div class="text-6xl text-orange-400 mb-4 flex justify-center"><ion-icon name="leaf-outline"></ion-icon></div><h3 class="text-2xl font-bold text-white mb-2">Fresh Ingredients</h3><p class="text-gray-400">We source the freshest spices, vegetables, and meat daily to ensure unparalleled quality.</p></div><div class="animated-element" style="transition-delay: 200ms;"><div class="text-6xl text-orange-400 mb-4 flex justify-center"><ion-icon name="flame-outline"></ion-icon></div><h3 class="text-2xl font-bold text-white mb-2">Authentic 'Dum' Style</h3><p class="text-gray-400">Our biryani is slow-cooked in a sealed pot, locking in all the flavors and aromas.</p></div><div class="animated-element" style="transition-delay: 400ms;"><div class="text-6xl text-orange-400 mb-4 flex justify-center"><ion-icon name="shield-checkmark-outline"></ion-icon></div><h3 class="text-2xl font-bold text-white mb-2">Hygiene Guaranteed</h3><p class="text-gray-400">We adhere to the strictest hygiene standards in our kitchen for your safety and peace of mind.</p></div></div></div></section>
-    <section id="menu" class="py-20"><div class="container mx-auto px-6"><h2 class="text-4xl md:text-5xl font-display text-center text-orange-400 mb-12 animated-element">Our Signature Dishes</h2><div id="menu-items" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div></div></section>
-    <section id="gallery" class="py-20 bg-gray-900"><div class="container mx-auto px-6"><h2 class="text-4xl md:text-5xl font-display text-center text-orange-400 mb-12 animated-element">Our Culinary Gallery</h2><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><div class="gallery-item rounded-lg overflow-hidden animated-element"><img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb862a?q=80&w=2970&auto=format&fit=crop" alt="Biryani close-up" class="w-full h-full object-cover"></div><div class="gallery-item rounded-lg overflow-hidden animated-element"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=2871&auto=format&fit=crop" alt="Paneer Tikka" class="w-full h-full object-cover"></div><div class="gallery-item rounded-lg overflow-hidden animated-element"><img src="https://images.unsplash.com/photo-1599451447235-950371f83b73?q=80&w=2874&auto=format&fit=crop" alt="Pakoda" class="w-full h-full object-cover"></div><div class="gallery-item rounded-lg overflow-hidden animated-element"><img src="https://images.unsplash.com/photo-1603575345037-66314283b9c7?q=80&w=2970&auto=format&fit=crop" alt="Gulab Jamun" class="w-full h-full object-cover"></div></div></div></section>
-    <section id="testimonials" class="py-20"><div class="container mx-auto px-6"><h2 class="text-4xl md:text-5xl font-display text-center text-orange-400 mb-12 animated-element">What Our Customers Say</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="bg-gray-800 p-6 rounded-lg animated-element"><p class="text-gray-300 italic">"The best biryani I've had in ages! The rice was perfectly cooked and the chicken was so tender. Absolutely divine."</p><p class="text-orange-400 font-bold mt-4">- Rohan S.</p></div><div class="bg-gray-800 p-6 rounded-lg animated-element" style="transition-delay: 200ms;"><p class="text-gray-300 italic">"Motu Mama never disappoints. Consistent taste and great portion sizes. The onion pakodas are a must-try!"</p><p class="text-orange-400 font-bold mt-4">- Priya K.</p></div><div class="bg-gray-800 p-6 rounded-lg animated-element" style="transition-delay: 400ms;"><p class="text-gray-300 italic">"Fast delivery and amazing food. It's my go-to place for weekend feasts. Highly recommended!"</p><p class="text-orange-400 font-bold mt-4">- Ankit M.</p></div></div></div></section>
-    <section id="order-section" class="py-20 bg-gray-900"><div class="container mx-auto px-6 text-center"><div class="animated-element"><h2 class="text-4xl font-display text-orange-400 mb-4">Ready to Feast?</h2><p class="text-gray-300 mb-8 max-w-2xl mx-auto">Click the button below to customize your order. We'll get it ready for you fresh and hot!</p><button id="start-order-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 flex items-center justify-center mx-auto gap-2"><ion-icon name="restaurant-outline"></ion-icon>Place Your Order</button></div></div></section>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-display font-extrabold text-red-500 nav-item-animate">Motu Mama Biryani</h1>
+            <nav class="hidden md:flex items-center">
+                <a href="#menu" data-section="menu" class="nav-link text-white hover:text-red-500 font-semibold transition duration-300 mx-4 nav-item-animate" style="animation-delay: 100ms;">Menu</a>
+                <a href="#why-us" data-section="why-us" class="nav-link text-white hover:text-red-500 font-semibold transition duration-300 mx-4 nav-item-animate" style="animation-delay: 200ms;">Why Us</a>
+                <a href="#gallery" data-section="gallery" class="nav-link text-white hover:text-red-500 font-semibold transition duration-300 mx-4 nav-item-animate" style="animation-delay: 300ms;">Gallery</a>
+                <a href="#order-section" data-section="order-section" class="nav-link bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-5 rounded-full transition duration-300 ml-4 nav-item-animate" style="animation-delay: 400ms;">Order Now</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-white text-3xl"><ion-icon name="menu-outline"></ion-icon></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/95">
+            <a href="#menu" data-section="menu" class="nav-link block text-center text-white py-3 hover:text-red-500 transition duration-300">Menu</a>
+            <a href="#why-us" data-section="why-us" class="nav-link block text-center text-white py-3 hover:text-red-500 transition duration-300">Why Us</a>
+            <a href="#gallery" data-section="gallery" class="nav-link block text-center text-white py-3 hover:text-red-500 transition duration-300">Gallery</a>
+            <a href="#order-section" data-section="order-section" class="nav-link block text-center bg-red-500 text-white font-bold py-3 hover:bg-red-600 transition duration-300">Order Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4"><div class="animated-element is-visible"><h2 class="text-5xl sm:text-6xl md:text-8xl font-display text-white mb-4 leading-tight">Taste the Royal Legacy</h2><p class="text-lg sm:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Authentic Dum Biryani, slow-cooked with passion and the finest ingredients, delivered to your doorstep.</p><a href="#menu" class="nav-link bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">Explore Our Menu</a></div></section>
+    
+    <!-- Other sections with updated colors -->
+    <section id="why-us" class="py-20 bg-gray-900"><div class="container mx-auto px-6"><h2 class="text-4xl md:text-5xl font-display text-center text-red-500 mb-12 animated-element">Why Choose Us?</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center"><div class="animated-element"><div class="text-6xl text-red-500 mb-4 flex justify-center"><ion-icon name="leaf-outline"></ion-icon></div><h3 class="text-2xl font-bold text-white mb-2">Fresh Ingredients</h3><p class="text-gray-400">We source the freshest spices, vegetables, and meat daily to ensure unparalleled quality.</p></div><div class="animated-element" style="transition-delay: 200ms;"><div class="text-6xl text-red-500 mb-4 flex justify-center"><ion-icon name="flame-outline"></ion-icon></div><h3 class="text-2xl font-bold text-white mb-2">Authentic 'Dum' Style</h3><p class="text-gray-400">Our biryani is slow-cooked in a sealed pot, locking in all the flavors and aromas.</p></div><div class="animated-element" style="transition-delay: 400ms;"><div class="text-6xl text-red-500 mb-4 flex justify-center"><ion-icon name="shield-checkmark-outline"></ion-icon></div><h3 class="text-2xl font-bold text-white mb-2">Hygiene Guaranteed</h3><p class="text-gray-400">We adhere to the strictest hygiene standards in our kitchen for your safety and peace of mind.</p></div></div></div></section>
+    <section id="menu" class="py-20"><div class="container mx-auto px-6"><h2 class="text-4xl md:text-5xl font-display text-center text-red-500 mb-12 animated-element">Our Signature Dishes</h2><div id="menu-items" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div></div></section>
+    <section id="gallery" class="py-20 bg-gray-900"><div class="container mx-auto px-6"><h2 class="text-4xl md:text-5xl font-display text-center text-red-500 mb-12 animated-element">Our Culinary Gallery</h2><div class="grid grid-cols-2 md:grid-cols-4 gap-4"><div class="gallery-item rounded-lg overflow-hidden animated-element"><img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb862a?q=80&w=2970&auto=format&fit=crop" alt="Biryani close-up" class="w-full h-full object-cover"></div><div class="gallery-item rounded-lg overflow-hidden animated-element"><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=2871&auto=format&fit=crop" alt="Paneer Tikka" class="w-full h-full object-cover"></div><div class="gallery-item rounded-lg overflow-hidden animated-element"><img src="https://images.unsplash.com/photo-1599451447235-950371f83b73?q=80&w=2874&auto=format&fit=crop" alt="Pakoda" class="w-full h-full object-cover"></div><div class="gallery-item rounded-lg overflow-hidden animated-element"><img src="https://images.unsplash.com/photo-1603575345037-66314283b9c7?q=80&w=2970&auto=format&fit=crop" alt="Gulab Jamun" class="w-full h-full object-cover"></div></div></div></section>
+    <section id="testimonials" class="py-20"><div class="container mx-auto px-6"><h2 class="text-4xl md:text-5xl font-display text-center text-red-500 mb-12 animated-element">What Our Customers Say</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="bg-gray-800 p-6 rounded-lg animated-element"><p class="text-gray-300 italic">"The best biryani I've had in ages! The rice was perfectly cooked and the chicken was so tender. Absolutely divine."</p><p class="text-red-500 font-bold mt-4">- Rohan S.</p></div><div class="bg-gray-800 p-6 rounded-lg animated-element" style="transition-delay: 200ms;"><p class="text-gray-300 italic">"Motu Mama never disappoints. Consistent taste and great portion sizes. The onion pakodas are a must-try!"</p><p class="text-red-500 font-bold mt-4">- Priya K.</p></div><div class="bg-gray-800 p-6 rounded-lg animated-element" style="transition-delay: 400ms;"><p class="text-gray-300 italic">"Fast delivery and amazing food. It's my go-to place for weekend feasts. Highly recommended!"</p><p class="text-red-500 font-bold mt-4">- Ankit M.</p></div></div></div></section>
+    <section id="order-section" class="py-20 bg-gray-900"><div class="container mx-auto px-6 text-center"><div class="animated-element"><h2 class="text-4xl font-display text-red-500 mb-4">Ready to Feast?</h2><p class="text-gray-400 mb-8 max-w-2xl mx-auto">Click the button below to customize your order. We'll get it ready for you fresh and hot!</p><button id="start-order-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 flex items-center justify-center mx-auto gap-2"><ion-icon name="restaurant-outline"></ion-icon>Place Your Order</button></div></div></section>
     <footer class="bg-black py-8"><div class="container mx-auto px-6 text-center text-gray-500"><p>&copy; 2024 Motu Mama Biryani. All Rights Reserved.</p><p class="text-sm">Designed with ❤️ for the love of Biryani.</p></div></footer>
 
     <!-- Order Modal -->
-    <div id="order-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 hidden modal-backdrop"><div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-lg max-h-full overflow-y-auto"><div class="sticky top-0 bg-gray-800 z-10"><div class="flex justify-between items-center p-5 border-b border-gray-700"><h3 class="text-2xl font-display text-orange-400">Your Order</h3><button id="close-modal-btn" class="text-gray-400 hover:text-white text-3xl">&times;</button></div></div><div class="p-6"><form id="customer-order-form"><div id="modal-menu-items" class="mb-6"></div><h4 class="text-xl font-semibold mb-4 text-white">Delivery Details</h4><div class="grid grid-cols-1 gap-4"><input type="text" id="customer-name" placeholder="Your Full Name" class="w-full bg-gray-700 text-white p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500" required><input type="tel" id="customer-phone" placeholder="Your Phone Number" class="w-full bg-gray-700 text-white p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500" required><textarea id="customer-address" placeholder="Your Full Address" class="w-full bg-gray-700 text-white p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-500" rows="3" required></textarea></div><div class="mt-6 text-right"><h3 class="text-2xl font-bold text-white">Total: ₹<span id="total-price">0.00</span></h3></div><div class="mt-6"><p id="order-error-msg" class="text-red-400 text-center mb-4 hidden"></p><button id="submit-order-btn" type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 flex items-center justify-center gap-2 disabled:bg-gray-500"><span id="submit-btn-text">Confirm Order & Pay</span><div id="submit-spinner" class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin hidden"></div></button></div></form></div></div></div>
+    <div id="order-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 hidden modal-backdrop"><div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] flex flex-col"><div class="flex justify-between items-center p-5 border-b border-gray-700"><h3 class="text-2xl font-display text-red-500">Your Order</h3><button id="close-modal-btn" class="text-gray-400 hover:text-white text-3xl">&times;</button></div><div class="p-6 overflow-y-auto"><form id="customer-order-form"><div id="modal-menu-items" class="mb-6"></div><h4 class="text-xl font-semibold mb-4 text-white">Delivery Details</h4><div class="grid grid-cols-1 gap-4"><input type="text" id="customer-name" placeholder="Your Full Name" class="w-full bg-gray-700 text-white p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500" required><input type="tel" id="customer-phone" placeholder="Your Phone Number" class="w-full bg-gray-700 text-white p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500" required><textarea id="customer-address" placeholder="Your Full Address" class="w-full bg-gray-700 text-white p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500" rows="3" required></textarea></div><div class="mt-6 text-right"><h3 class="text-2xl font-bold text-white">Total: ₹<span id="total-price">0.00</span></h3></div><div class="mt-6 border-t border-gray-700 pt-6"><h4 class="text-xl font-semibold mb-4 text-white">Payment Method</h4><div class="flex flex-col sm:flex-row gap-4 mb-4"><label class="flex items-center p-4 border border-gray-600 rounded-lg cursor-pointer has-[:checked]:bg-red-900/20 has-[:checked]:border-red-500"><input type="radio" name="paymentMethod" value="online" class="w-5 h-5 mr-4 accent-red-500" checked><span class="font-semibold">Pay Online</span></label><label class="flex items-center p-4 border border-gray-600 rounded-lg cursor-pointer has-[:checked]:bg-red-900/20 has-[:checked]:border-red-500"><input type="radio" name="paymentMethod" value="cod" class="w-5 h-5 mr-4 accent-red-500"><span class="font-semibold">Cash on Delivery</span></label></div><p id="order-error-msg" class="text-red-400 text-center mb-4 hidden"></p><button id="submit-order-btn" type="submit" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 flex items-center justify-center gap-2 disabled:bg-gray-500"><span id="submit-btn-text">Proceed</span><div id="submit-spinner" class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin hidden"></div></button></div></form></div></div></div>
     
     <!-- Confirmation, Payment & Invoice Modal -->
-    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 hidden modal-backdrop">
-        <div class="bg-gray-800 rounded-lg shadow-xl w-full max-w-md text-center p-8 transition-all duration-300">
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[100] p-4 hidden modal-backdrop">
+        <div class="bg-gray-800 text-white rounded-lg shadow-xl w-full max-w-md text-center p-6 sm:p-8 transition-all duration-300 max-h-[90vh] overflow-y-auto">
             <!-- Payment View -->
-            <div id="payment-view">
-                <h2 class="text-3xl font-display text-orange-400 mb-2">Step 1: Scan & Pay</h2>
-                <p class="text-gray-300 mb-4">Scan the QR code with any UPI app.</p>
-                <div id="qrcode" class="flex justify-center mb-4 p-4 bg-white rounded-lg"></div>
-                <p class="text-lg font-bold text-white mb-6">Total Amount: ₹<span id="final-amount">0.00</span></p>
-                
-                <h2 class="text-3xl font-display text-green-500 mb-2">Step 2: Confirm Payment</h2>
-                <p class="text-gray-300 mb-4">Enter the UPI Transaction ID from your payment app to confirm your order.</p>
-                <input type="text" id="upi-id-input" placeholder="Enter UPI Transaction ID here" class="w-full bg-gray-700 text-white p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 mb-4 text-center" required>
-                
-                <button id="confirm-payment-btn" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 flex items-center justify-center gap-2">
-                    <ion-icon name="checkmark-done-circle-outline"></ion-icon>
-                    Submit Transaction ID
-                </button>
-                <p id="payment-status-msg" class="text-sm text-yellow-400 mt-4 h-4"></p>
-            </div>
+            <div id="payment-view" class="hidden"><h2 class="text-2xl sm:text-3xl font-display text-red-500 mb-2">Step 1: Pay</h2><p class="text-gray-300 mb-4 text-sm sm:text-base">Complete the payment for your order.</p><div class="hidden md:block"><p class="text-gray-400 mb-4">Scan the QR code with any UPI app.</p><div id="qrcode" class="flex justify-center mb-4 p-4 bg-white rounded-lg border"></div></div><div class="block md:hidden space-y-4 mb-4"><p class="text-gray-400">Tap a button to pay with your favorite app.</p><a id="phonepe-btn" href="#" class="flex items-center justify-center w-full bg-[#6739B7] text-white font-bold py-3 px-4 rounded-lg text-lg"><img src="https://asset.brandfetch.io/idqdo-Q39V/idOa_22c3g.svg" class="w-6 h-6 mr-3 shrink-0" alt="PhonePe"><span>Pay with PhonePe</span></a><a id="gpay-btn" href="#" class="flex items-center justify-center w-full bg-white text-black font-bold py-3 px-4 rounded-lg text-lg border border-gray-300"><img src="https://asset.brandfetch.io/idg5p_2k69/id0-TSa22S.svg" class="w-6 h-6 mr-3 shrink-0" alt="Google Pay"><span>Pay with Google Pay</span></a></div><p class="text-lg font-bold text-white mb-6">Total Amount: ₹<span id="final-amount">0.00</span></p><hr class="border-gray-700 my-6"><h2 class="text-2xl sm:text-3xl font-display text-green-500 mb-2">Step 2: Confirm</h2><p class="text-gray-300 mb-4 text-sm sm:text-base">Enter the UPI Transaction ID from your payment app to confirm your order.</p><input type="text" id="upi-id-input" placeholder="Enter UPI Transaction ID here" class="w-full bg-gray-700 text-white p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500 mb-4 text-center" required><button id="confirm-payment-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 flex items-center justify-center gap-2"><ion-icon name="checkmark-done-circle-outline"></ion-icon>Submit Transaction ID</button><p id="payment-status-msg" class="text-sm text-yellow-400 mt-4 h-4"></p></div>
             <!-- Invoice View -->
-            <div id="invoice-view" class="hidden">
-                 <div class="text-6xl text-green-400 mb-4 flex justify-center"><ion-icon name="receipt-outline"></ion-icon></div>
-                <h2 class="text-3xl font-display text-green-400 mb-4">Confirmation Sent!</h2>
-                <p class="text-gray-300 mb-6">We have received your details. Your order will be confirmed after we verify the payment.</p>
-                <div id="invoice-content" class="text-left bg-gray-700 p-4 rounded-lg mb-6 font-mono text-sm whitespace-pre-wrap">
-                    <!-- Invoice details will be injected here -->
-                </div>
-                <button id="download-invoice-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 flex items-center justify-center gap-2 mb-4">
-                    <ion-icon name="download-outline"></ion-icon>
-                    Download Invoice
-                </button>
-                <button id="close-confirmation-btn" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Close</button>
-            </div>
+            <div id="invoice-view" class="hidden"><div class="text-6xl text-green-500 mb-4 flex justify-center"><ion-icon name="receipt-outline"></ion-icon></div><h2 id="invoice-title" class="text-3xl font-display text-green-500 mb-4"></h2><p id="invoice-subtitle" class="text-gray-300 mb-6"></p><div id="invoice-content" class="text-left bg-gray-900 p-4 rounded-lg mb-6 font-mono text-sm whitespace-pre-wrap overflow-x-auto border border-gray-700"></div><button id="download-invoice-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 flex items-center justify-center gap-2 mb-4"><ion-icon name="download-outline"></ion-icon>Download Invoice</button><button id="close-confirmation-btn" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Close</button></div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- CONFIGURATION ---
-            const GOOGLE_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx2Rv-H5-14brcgW8ajafHyTvInCsFjNbSLFwkWgz3wXNNibRjF5BHYrqN0UdiVkZdMrQ/exec"; // IMPORTANT: Paste your NEW URL here
+            const GOOGLE_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx2Rv-H5-14brcgW8ajafHyTvInCsFjNbSLFwkWgz3wXNNibRjF5BHYrqN0UdiVkZdMrQ/exec";
             const YOUR_UPI_ID = "7205889342@ybl"; 
 
             // --- GLOBAL STATE ---
             let currentOrderId = null; 
             let order = [];
             let customerDetails = {};
+            let paymentMethod = 'online';
 
             const menuData = [
                 { name: "Chicken Dum Biryani (Half)", price: 150, description: "Aromatic basmati rice and tender chicken, slow-cooked to perfection.", image: "https://images.unsplash.com/photo-1563379926898-05f4575a457f?q=80&w=2874&auto=format&fit=crop" },
-                { name: "Chicken Dum Biryani (Full)", price: 240, description: "A generous portion for the true biryani lover. Double the delight.", image: "https://images.unsplash.com/photo-1512152272829-e3139592d56f?q=80&w=2970&auto=format&fit=crop" },
+                { name: "Chicken Dum Biryani (Full)", price: 240, description: "A generous portion for the true biryani lover. Double the delight.", image: "https://images.unsplash.com/photo-1512152272829-e3139592d_56f?q=80&w=2970&auto=format&fit=crop" },
                 { name: "Onion Pakoda (Full Plate)", price: 100, description: "Crispy, golden-fried onion fritters. The perfect snack.", image: "https://images.unsplash.com/photo-1599451447235-950371f83b73?q=80&w=2874&auto=format&fit=crop" },
                 { name: "Paneer Tikka", price: 180, description: "Soft paneer cubes marinated in spices and grilled to perfection.", image: "https://images.unsplash.com/photo-1567188040759-fb8a873dc6d8?q=80&w=2817&auto=format&fit=crop" },
                 { name: "Gulab Jamun (2 pcs)", price: 60, description: "Sweet, syrupy, and melt-in-your-mouth deliciousness.", image: "https://images.unsplash.com/photo-1603575345037-66314283b9c7?q=80&w=2970&auto=format&fit=crop" }
@@ -113,18 +115,10 @@
             }
 
             function populateMenu() {
-                const menuItemsHTML = menuData.map((item, i) => `
-                    <div class="menu-card bg-gray-800 rounded-lg overflow-hidden shadow-lg animated-element" style="transition-delay: ${i * 100}ms;">
-                        <img src="${item.image}" alt="${item.name}" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/8B4513/FFFFFF?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">${item.name}</h3>
-                            <p class="text-gray-400 mb-4">${item.description}</p>
-                            <p class="text-2xl font-display text-orange-400">₹${item.price.toFixed(2)}</p>
-                        </div>
-                    </div>`).join('');
+                const menuItemsHTML = menuData.map((item, i) => `<div class="menu-card rounded-lg overflow-hidden animated-element" style="transition-delay: ${i * 100}ms;"><img src="${item.image}" alt="${item.name}" class="w-full h-56 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/8B4513/FFFFFF?text=Image+Not+Found';"><div class="p-6"><h3 class="text-2xl font-bold text-white mb-2">${item.name}</h3><p class="text-gray-400 mb-4">${item.description}</p><p class="text-2xl font-display text-red-500">₹${item.price.toFixed(2)}</p></div></div>`).join('');
                 document.getElementById('menu-items').innerHTML = menuItemsHTML;
                 
-                const modalMenuHTML = menuData.map((item, index) => `<div class="flex justify-between items-center mb-4 p-3 bg-gray-700 rounded-md"><div><p class="font-semibold text-white">${item.name}</p><p class="text-sm text-gray-400">₹${item.price.toFixed(2)}</p></div><div class="flex items-center"><button type="button" class="quantity-btn w-8 h-8 rounded-full bg-gray-600 text-white font-bold text-xl flex items-center justify-center" data-index="${index}" data-action="decrease">-</button><span id="quantity-${index}" class="w-10 text-center font-bold text-lg text-white">0</span><button type="button" class="quantity-btn w-8 h-8 rounded-full bg-orange-500 text-white font-bold text-xl flex items-center justify-center" data-index="${index}" data-action="increase">+</button></div></div>`).join('');
+                const modalMenuHTML = menuData.map((item, index) => `<div class="flex justify-between items-center mb-4 p-3 bg-gray-700 rounded-md border border-gray-600"><div><p class="font-semibold text-white">${item.name}</p><p class="text-sm text-gray-400">₹${item.price.toFixed(2)}</p></div><div class="flex items-center"><button type="button" class="quantity-btn w-8 h-8 rounded-full bg-gray-600 text-white font-bold text-xl flex items-center justify-center">-</button><span id="quantity-${index}" class="w-10 text-center font-bold text-lg text-white">0</span><button type="button" class="quantity-btn w-8 h-8 rounded-full bg-red-500 text-white font-bold text-xl flex items-center justify-center">+</button></div></div>`).join('');
                 document.getElementById('modal-menu-items').innerHTML = modalMenuHTML;
             }
 
@@ -137,11 +131,20 @@
                 document.getElementById('download-invoice-btn').addEventListener('click', downloadInvoice);
                 
                 document.getElementById('modal-menu-items').addEventListener('click', (e) => {
-                    if (e.target.classList.contains('quantity-btn')) {
-                        const index = e.target.dataset.index;
-                        const action = e.target.dataset.action;
-                        if (action === 'increase') order[index]++;
-                        else if (action === 'decrease' && order[index] > 0) order[index]--;
+                    const btn = e.target.closest('.quantity-btn');
+                    if (btn) {
+                        const container = btn.parentElement;
+                        const quantitySpan = container.querySelector('span');
+                        const isDecrease = [...container.children].indexOf(btn) === 0;
+                        const itemIndex = Array.from(document.querySelectorAll('#modal-menu-items .flex.justify-between')).indexOf(container.parentElement);
+
+                        let currentQuantity = parseInt(quantitySpan.textContent);
+                        if (!isDecrease) {
+                            currentQuantity++;
+                        } else if (currentQuantity > 0) {
+                            currentQuantity--;
+                        }
+                        order[itemIndex] = currentQuantity;
                         updateTotalPrice();
                     }
                 });
@@ -175,6 +178,7 @@
 
             function handleOrderSubmit(e) {
                 e.preventDefault();
+                paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
                 const totalAmount = parseFloat(document.getElementById('total-price').textContent);
                 if (totalAmount === 0) {
                     const errorMsgEl = document.getElementById('order-error-msg');
@@ -204,13 +208,18 @@
                 formData.append('address', customerDetails.address);
                 formData.append('order_items', JSON.stringify(orderDetails));
                 formData.append('total_amount', totalAmount.toFixed(2));
+                formData.append('payment_method', paymentMethod);
                 
                 fetch(GOOGLE_SCRIPT_WEB_APP_URL, { method: 'POST', body: formData })
                 .then(response => response.json())
                 .then(data => {
                     if (data.result === 'success' && data.orderId) {
                         currentOrderId = data.orderId;
-                        showPaymentModal(totalAmount);
+                        if (paymentMethod === 'online') {
+                            showPaymentModal(totalAmount);
+                        } else {
+                            generateAndShowInvoice(null, 'cod');
+                        }
                     } else { throw new Error(data.error || 'Failed to get order ID.'); }
                 })
                 .catch(error => {
@@ -220,7 +229,7 @@
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
-                    submitBtnText.textContent = 'Confirm Order & Pay';
+                    submitBtnText.textContent = 'Proceed';
                     submitSpinner.classList.add('hidden');
                 });
             }
@@ -228,10 +237,17 @@
             function showPaymentModal(totalAmount) {
                 orderModal.classList.add('hidden');
                 confirmationModal.classList.remove('hidden');
+                invoiceView.classList.add('hidden');
+                paymentView.classList.remove('hidden');
                 
                 const upiUrl = `upi://pay?pa=${YOUR_UPI_ID}&pn=Motu%20Mama%20Biryani&am=${totalAmount.toFixed(2)}&cu=INR&tn=Order%20from%20${customerDetails.name}`;
+                
                 document.getElementById('qrcode').innerHTML = "";
                 new QRCode(document.getElementById('qrcode'), { text: upiUrl, width: 180, height: 180 });
+                
+                document.getElementById('phonepe-btn').href = upiUrl;
+                document.getElementById('gpay-btn').href = upiUrl;
+
                 document.getElementById('final-amount').textContent = totalAmount.toFixed(2);
             }
 
@@ -259,7 +275,7 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.result === 'success') {
-                        generateAndShowInvoice(upiId);
+                        generateAndShowInvoice(upiId, 'online');
                     } else { throw new Error(data.message || 'Confirmation failed.'); }
                 })
                 .catch(error => {
@@ -269,30 +285,28 @@
                 });
             }
 
-            function generateAndShowInvoice(upiId) {
-                const totalAmount = parseFloat(document.getElementById('final-amount').textContent);
+            function generateAndShowInvoice(upiId, type) {
+                const totalAmount = parseFloat(document.getElementById('total-price').textContent);
                 let itemsText = menuData
                     .map((item, index) => ({ ...item, quantity: order[index] }))
                     .filter(item => item.quantity > 0)
                     .map(item => `${item.name.padEnd(30)} x${item.quantity} | ₹${(item.price * item.quantity).toFixed(2)}`)
                     .join('\n');
+                
+                let invoiceText;
+                if (type === 'cod') {
+                    document.getElementById('invoice-title').textContent = 'Order Placed!';
+                    document.getElementById('invoice-subtitle').textContent = 'Your order has been placed successfully. Please pay on delivery.';
+                    invoiceText = `MOTU MAMA BIRYANI - INVOICE\n--------------------------------\nDate: ${new Date(currentOrderId).toLocaleString()}\nCustomer: ${customerDetails.name}\nPhone: ${customerDetails.phone}\n--------------------------------\nITEMS:\n${itemsText}\n--------------------------------\nTOTAL AMOUNT: ₹${totalAmount.toFixed(2)}\nPAYMENT METHOD: Cash on Delivery\nSTATUS: PENDING\n--------------------------------\nThank you for your order!`;
+                } else {
+                    document.getElementById('invoice-title').textContent = 'Confirmation Sent!';
+                    document.getElementById('invoice-subtitle').textContent = 'We have received your details. Your order will be confirmed after we verify the payment.';
+                    invoiceText = `MOTU MAMA BIRYANI - INVOICE\n--------------------------------\nDate: ${new Date(currentOrderId).toLocaleString()}\nCustomer: ${customerDetails.name}\nPhone: ${customerDetails.phone}\n--------------------------------\nITEMS:\n${itemsText}\n--------------------------------\nTOTAL AMOUNT: ₹${totalAmount.toFixed(2)}\nUPI Transaction ID: ${upiId}\nSTATUS: VERIFICATION PENDING\n--------------------------------\nYour order will be confirmed after we\nverify your payment. Thank you!`;
+                }
 
-                const invoiceText = `MOTU MAMA BIRYANI - INVOICE
---------------------------------
-Date: ${new Date(currentOrderId).toLocaleString()}
-Customer: ${customerDetails.name}
-Phone: ${customerDetails.phone}
---------------------------------
-ITEMS:
-${itemsText}
---------------------------------
-TOTAL AMOUNT: ₹${totalAmount.toFixed(2)}
-UPI Transaction ID: ${upiId}
-STATUS: VERIFICATION PENDING
---------------------------------
-Your order will be confirmed after we
-verify your payment. Thank you!`;
                 document.getElementById('invoice-content').innerText = invoiceText;
+                orderModal.classList.add('hidden');
+                confirmationModal.classList.remove('hidden');
                 paymentView.classList.add('hidden');
                 invoiceView.classList.remove('hidden');
             }
@@ -312,13 +326,14 @@ verify your payment. Thank you!`;
 
             function resetAndCloseConfirmationModal() {
                 confirmationModal.classList.add('hidden');
-                setTimeout(() => { // Delay reset to allow modal to close smoothly
-                    paymentView.classList.remove('hidden');
+                setTimeout(() => {
+                    paymentView.classList.add('hidden');
                     invoiceView.classList.add('hidden');
                     document.getElementById('confirm-payment-btn').disabled = false;
                     document.getElementById('payment-status-msg').textContent = '';
                     document.getElementById('upi-id-input').value = '';
                     document.getElementById('customer-order-form').reset();
+                    document.querySelector('input[name="paymentMethod"][value="online"]').checked = true;
                     order.fill(0);
                     updateTotalPrice();
                     currentOrderId = null;
